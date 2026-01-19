@@ -1,54 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
+<html>
+  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expérience 3D & RA</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Import Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Import <model-viewer> polyfill for older browsers if needed -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-</head>
-<body>
-    <div class="app-container">
-        <header>
-            <h1>Exploration 3D</h1>
-            <p>Visualisez cet objet en Réalité Augmentée</p>
-        </header>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js"></script>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/examples/image-tracking/assets/card-example/card.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <main class="viewer-container">
-            <model-viewer 
-                id="astronaut-viewer"
-                src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" 
-                ios-src="https://modelviewer.dev/shared-assets/models/Astronaut.usdz"
-                alt="Un modèle 3D d'un astronaute" 
-                ar 
-                ar-modes="webxr scene-viewer quick-look" 
-                camera-controls 
-                auto-rotate 
-                shadow-intensity="1"
-                environment-image="neutral"
-                exposure="1"
-                loading="lazy">
-                
-                <button slot="ar-button" id="ar-button">
-                    🚀 Voir en AR
-                </button>
-
-                <div id="ar-prompt">
-                    <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
-                </div>
-            </model-viewer>
-        </main>
-
-        <footer>
-            <div class="card">
-                <h3>Détails Technologiques</h3>
-                <p>Propulsé par <code>&lt;model-viewer&gt;</code> de Google.</p>
-            </div>
-        </footer>
-    </div>
-    <script src="app.js"></script>
-</body>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="0.1 0.1 0.1" src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"></a-gltf-model>
+      </a-entity>
+    </a-scene>
+  </body>
 </html>
